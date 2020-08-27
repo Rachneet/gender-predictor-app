@@ -1,1 +1,1 @@
-web: gunicorn app:app
+gunicorn --log-level=debug --bind 0.0.0.0 app:flask_app
