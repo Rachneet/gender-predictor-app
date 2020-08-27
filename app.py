@@ -279,7 +279,7 @@ def make_prediction():
 if __name__ == "__main__":
 
     if (os.environ.get('PORT')):
-        port = os.environ.get('PORT')
+        port = int(os.environ.get('PORT'))
         host = "0.0.0.0"
     else:
         host = "127.0.0.1"
