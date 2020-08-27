@@ -9,7 +9,7 @@ import os
 # import string
 import sys
 
-csv.field_size_limit(sys.maxsize)
+#csv.field_size_limit(sys.maxsize)
 
 #-------------------------------------flask backend-----------------------------------------------
 
