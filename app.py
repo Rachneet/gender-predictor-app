@@ -25,13 +25,13 @@ def favicon():
     return flask_app.send_static_file('favicon.ico')
 
 
-@flask_app.route("/prediction/", methods=['POST'])
+@flask_app.route("/api/prediction/", methods=["POST"])
 def make_prediction():
     try:
         formData = request.json
         # print(formData)
         data = [val for val in formData.values()]
-        # print(data)
+        print(data)
         # prediction = predict_gender(data)
         prediction = "Male"
         # prediction = predict.prediction(data)

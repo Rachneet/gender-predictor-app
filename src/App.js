@@ -51,15 +51,8 @@ class App extends Component {
     }
     else {
       this.setState({isLoading: true});
-    //       if (os.environ.get('PORT')){
-    //     port = os.environ.get('PORT');
-    //     host = "0.0.0.0";
-    //       }
-    // else {
-    //           host = "127.0.0.1";
-    //           port = "5000";
-    //       }
-      fetch('https://127.0.0.1/prediction/',
+
+      fetch('/api/prediction/',
           {
             headers: {
               'Accept': 'application/json',
