@@ -19,9 +19,9 @@ from flask_restplus import Api, Resource, fields
 import csv
 import os
 import torch.nn as nn
-import torch
-import numpy as np
-from nltk.corpus import stopwords
+# import torch
+# import numpy as np
+# from nltk.corpus import stopwords
 import string
 import sys
 
@@ -233,44 +233,44 @@ def make_prediction():
 #----------------------------------------------Inference module------------------------------------------------------
 
 
-def predict_gender(text):
-    res = ""
-    words = stopwords.words("english")
-    table = str.maketrans('', '', string.punctuation)
-    # text = "This thing is not good at all. Do not buy it."
-    text = text[0]
-    cleaned_text = " ".join([i.translate(table) for i in text.split() if i.isalpha() if i not in words]).lower()
-    max_length = 1014
-    vocabulary = list(""" abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'/\|_@#$%ˆ&*˜‘+-=<>()[]{}""")
-    identity_mat = np.identity(len(vocabulary))
-
-    data = np.array([identity_mat[vocabulary.index(i)] for i in list(cleaned_text) if i in vocabulary],
-                    dtype=np.float32)
-
-    if len(data) > max_length:
-        data = data[:max_length]
-    elif 0 < len(data) < max_length:
-        data = np.concatenate(
-            (data, np.zeros((max_length - len(data), len(vocabulary)), dtype=np.float32)))
-    elif len(data) == 0:
-        data = np.zeros((max_length, len(vocabulary)), dtype=np.float32)
-
-
-    model = torch.load("../model_amz_ccnn").cpu()
-    model.eval()
-
-    data = torch.FloatTensor(data).cpu()
-    data = data.unsqueeze(dim=0)
-    # print(data.shape)
-    prediction = model(data)
-    # print(prediction)
-    prediction = torch.argmax(prediction)
-    if prediction == 0:
-        res = "Male"
-    else:
-        res = "Female"
-
-    return res
+# def predict_gender(text):
+#     res = ""
+#     words = stopwords.words("english")
+#     table = str.maketrans('', '', string.punctuation)
+#     # text = "This thing is not good at all. Do not buy it."
+#     text = text[0]
+#     cleaned_text = " ".join([i.translate(table) for i in text.split() if i.isalpha() if i not in words]).lower()
+#     max_length = 1014
+#     vocabulary = list(""" abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'/\|_@#$%ˆ&*˜‘+-=<>()[]{}""")
+#     identity_mat = np.identity(len(vocabulary))
+#
+#     data = np.array([identity_mat[vocabulary.index(i)] for i in list(cleaned_text) if i in vocabulary],
+#                     dtype=np.float32)
+#
+#     if len(data) > max_length:
+#         data = data[:max_length]
+#     elif 0 < len(data) < max_length:
+#         data = np.concatenate(
+#             (data, np.zeros((max_length - len(data), len(vocabulary)), dtype=np.float32)))
+#     elif len(data) == 0:
+#         data = np.zeros((max_length, len(vocabulary)), dtype=np.float32)
+#
+#
+#     model = torch.load("../model_amz_ccnn").cpu()
+#     model.eval()
+#
+#     data = torch.FloatTensor(data).cpu()
+#     data = data.unsqueeze(dim=0)
+#     # print(data.shape)
+#     prediction = model(data)
+#     # print(prediction)
+#     prediction = torch.argmax(prediction)
+#     if prediction == 0:
+#         res = "Male"
+#     else:
+#         res = "Female"
+#
+#     return res
 
 
 #-----------------------------------------------------MAIN------------------------------------------------------

@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.css';
+import os from 'os';
 
 class App extends Component {
 
@@ -39,7 +40,9 @@ class App extends Component {
 
   handlePredictClick = (event) => {
      event.preventDefault();
-     var errors = []
+     var errors = [];
+      var host="";
+      var port="";
     const formData = this.state.formData;
 
      // text
@@ -48,7 +51,15 @@ class App extends Component {
     }
     else {
       this.setState({isLoading: true});
-      fetch('https://127.0.0.1/prediction/',
+          if (os.environ.get('PORT')){
+        port = os.environ.get('PORT');
+        host = "0.0.0.0";
+          }
+    else {
+              host = "127.0.0.1";
+              port = "5000";
+          }
+      fetch('https://"+host+"/prediction/',
           {
             headers: {
               'Accept': 'application/json',
