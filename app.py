@@ -285,5 +285,4 @@ if __name__ == "__main__":
         host = "127.0.0.1"
         port = 5000
     flask_app.run(host=host, debug=True, port=port)
-    # res = predict_gender("This is not a good product. Please avoid it")
-    # print(res)
+
