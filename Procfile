@@ -1,1 +1,1 @@
-web: gunicorn --log-level=debug --bind 0.0.0.0 app:flask_app
+web: gunicorn app:flask_app --bind 0.0.0.0:$PORT
