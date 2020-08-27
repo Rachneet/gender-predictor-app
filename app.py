@@ -1,31 +1,13 @@
-# import os
-# from flask import Flask
-#
-# app = Flask(__name__, static_folder='build/', static_url_path='/')
-# app.debug = 'DEBUG' in os.environ
-#
-#
-# @app.route('/')
-# def index():
-#     return app.send_static_file('index.html')
-#
-#
-# @app.route('/<path:path>')
-# def static_file(path):
-#     return app.send_static_file(path)
-
 from flask import Flask, request, jsonify, make_response
-from flask_restplus import Api, Resource, fields
+# from flask_restplus import Api, Resource, fields
 import csv
 import os
-import torch.nn as nn
+# import torch.nn as nn
 # import torch
 # import numpy as np
 # from nltk.corpus import stopwords
-import string
+# import string
 import sys
-
-
 
 csv.field_size_limit(sys.maxsize)
 
