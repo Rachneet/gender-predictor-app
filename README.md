@@ -1,9 +1,9 @@
-# react-flask-heroku
-Simple bootstrapping code to get you started with a React frontend and Flask backend ready to deploy to Heroku.
+# Gender Prediction based on User Text
+A webapp that takes in the user text as input and predicts the gender of the user. A CNN model trained on amazon reviews has been used for the prediction.
 
 ## Dependencies
 
-python3, npm, Heroku CLI
+python3, npm, Heroku CLI, pytorch
 
 ## Setup
 
@@ -15,16 +15,9 @@ python3, npm, Heroku CLI
 1. `npm run build`
 2. `heroku local`
 
-The application will be running at http://localhost:5000.
-
 ## Deploying
 
-First, create your app on Heroku. Then:
-
-1. `heroku git:remote -a {YOUR_APP_NAME}`
-2. `heroku buildpacks:set heroku/python`
-3. `heroku buildpacks:add --index 1 heroku/nodejs`
-4. `git push heroku master`
+The application is deployed at https://gender-prediction-app.herokuapp.com/.
 
 ## Project Structure
 
