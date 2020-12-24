@@ -23,3 +23,7 @@ The application is deployed at https://gender-prediction-app.herokuapp.com/.
 
 * Flask server is at `app.py`
 * React components in `src/`
+
+## Screenshot
+
+![alt text](https://github.com/Rachneet/gender-predictor-app/blob/master/gp_app_screenshot.PNG?raw=true)
